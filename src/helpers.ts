@@ -1153,11 +1153,11 @@ export function addHelpers(
               options.proxy.proxyContract
             );
           } catch (e) {}
-          if (!proxyContract || proxyContract === eip173Proxy) {
+          if (!proxyContract || proxyContract === eip173Proxy || proxyContract === eip173ProxyZk) {
             if (options.proxy.proxyContract === 'EIP173ProxyWithReceive') {
               proxyContract = network.zksync ? eip173ProxyWithReceiveZk : eip173ProxyWithReceive;
             } else if (options.proxy.proxyContract === 'EIP173Proxy') {
-              proxyContract = eip173Proxy;
+              proxyContract = network.zksync ? eip173ProxyZk : eip173Proxy;
             } else if (
               options.proxy.proxyContract === 'OpenZeppelinTransparentProxy'
             ) {

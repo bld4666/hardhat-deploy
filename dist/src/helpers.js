@@ -695,12 +695,12 @@ getArtifact, saveDeployment, willSaveToDisk, onPendingTx, getGasPrice, log, prin
                         proxyContract = await partialExtension.getExtendedArtifact(options.proxy.proxyContract);
                     }
                     catch (e) { }
-                    if (!proxyContract || proxyContract === EIP173Proxy_json_1.default) {
+                    if (!proxyContract || proxyContract === EIP173Proxy_json_1.default || proxyContract === EIP173Proxy_json_2.default) {
                         if (options.proxy.proxyContract === 'EIP173ProxyWithReceive') {
                             proxyContract = network.zksync ? EIP173ProxyWithReceive_json_2.default : EIP173ProxyWithReceive_json_1.default;
                         }
                         else if (options.proxy.proxyContract === 'EIP173Proxy') {
-                            proxyContract = EIP173Proxy_json_1.default;
+                            proxyContract = network.zksync ? EIP173Proxy_json_2.default : EIP173Proxy_json_1.default;
                         }
                         else if (options.proxy.proxyContract === 'OpenZeppelinTransparentProxy') {
                             checkABIConflict = false;
